@@ -9,6 +9,8 @@
 namespace FlashEvents\Gateway;
 
 
+use FlashEvents\Entities\EntityInterface;
+
 interface GatewayInterface
 {
 
@@ -16,4 +18,11 @@ interface GatewayInterface
      * @return array
      */
     public function fetchAll() : array ;
+
+    /**
+     * @param array $params
+     *
+     * @return EntityInterface|array
+     */
+    public function fetch(array $params);
 }

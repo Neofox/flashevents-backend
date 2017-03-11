@@ -8,6 +8,8 @@
 
 namespace FlashEvents\Gateway;
 
+use FlashEvents\Entities\EntityInterface;
+
 class User extends AbstractGateway
 {
     /**
@@ -17,4 +19,13 @@ class User extends AbstractGateway
         return $this->getRepository()->findAll();
     }
 
+    /**
+     * @param array $params
+     *
+     * @return array|EntityInterface
+     */
+    public function fetch(array $params)
+    {
+        return $this->getRepository()->findBy($params);
+    }
 }

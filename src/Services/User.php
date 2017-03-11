@@ -51,7 +51,7 @@ class User extends AbstractService
      */
     public function find(array $params)
     {
-        // TODO: Implement find() method.
+        return $this->getGateway()->fetch($params);
     }
 
     /**
@@ -60,5 +60,10 @@ class User extends AbstractService
     public function findAll(): array
     {
         return $this->getGateway()->fetchAll();
+    }
+
+    public function findFriends(int $userId)
+    {
+        return $this->getGateway()->fetchAllFriends($userId);
     }
 }
