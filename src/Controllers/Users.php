@@ -42,4 +42,20 @@ class Users
     public function deleteFriend(Request $request, Response $response) {
 
     }
+
+    public function getAllAddresses(Request $request, Response $response) {
+
+    }
+
+    public function getAddress(Request $request, Response $response) {
+
+    }
+
+    public function addAddress(Request $request, Response $response) {
+
+    }
+
+    public function deleteAddress(Request $request, Response $response) {
+
+    }
 }

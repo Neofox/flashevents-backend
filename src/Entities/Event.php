@@ -72,6 +72,12 @@ class Event
      * @ORM\Column(type="string")
      * @var string
      */
+    protected $category;
+
+    /**
+     * @ORM\Column(type="string")
+     * @var string
+     */
     protected $picture;
 
     /**
@@ -247,6 +253,23 @@ class Event
     public function setDescription(string $description): Event
     {
         $this->description = $description;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCategory(): string
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param string $category
+     */
+    public function setCategory(string $category)
+    {
+        $this->category = $category;
         return $this;
     }
 
