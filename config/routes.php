@@ -1,4 +1,4 @@
-`<?php
+<?php
 
 use FlashEvents\Entities\Address;
 use FlashEvents\Entities\Event;

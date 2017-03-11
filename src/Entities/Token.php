@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="tokens")
  */
-class Token
+class Token implements EntityInterface
 {
 
     /**

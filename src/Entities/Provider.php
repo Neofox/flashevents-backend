@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="providers")
  */
-class Provider
+class Provider implements EntityInterface
 {
     /**
      * @ORM\Id

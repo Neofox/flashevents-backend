@@ -3,9 +3,13 @@
 namespace FlashEvents\Gateway;
 
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityRepository;
 
-abstract class AbstractGateway
+abstract class AbstractGateway implements GatewayInterface
 {
+
+    /** @var string */
+    protected $entityClass;
 
     /**
      * @var EntityManager
@@ -14,13 +18,28 @@ abstract class AbstractGateway
 
 
     /**
-     * Gateway constructor.
-     *
-     * @param EntityManager $em
+     * @return EntityRepository
      */
-    public function __construct(EntityManager $em)
+    public function getRepository(): EntityRepository
     {
-        $this->em = $em;
+        return $this->getEm()->getRepository($this->entityClass);
+    }
+
+    /**
+     * @param string $entity
+     */
+    public function setEntityClass(string $entity)
+    {
+        $this->entityClass = $entity;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getEntityClass(): string
+    {
+        return $this->entityClass;
     }
 
     /**

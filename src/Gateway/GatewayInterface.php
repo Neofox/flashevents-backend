@@ -3,18 +3,17 @@
  * Created by PhpStorm.
  * User: jerome
  * Date: 11/03/2017
- * Time: 16:59
+ * Time: 17:48
  */
 
 namespace FlashEvents\Gateway;
 
-class User extends AbstractGateway
+
+interface GatewayInterface
 {
+
     /**
      * @return array
      */
-    public function fetchAll() {
-        return $this->getRepository()->findAll();
-    }
-
+    public function fetchAll() : array ;
 }
