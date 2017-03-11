@@ -8,6 +8,7 @@
 
 namespace FlashEvents\Gateway;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use FlashEvents\Entities\EntityInterface;
 
 class User extends AbstractGateway
@@ -27,5 +28,18 @@ class User extends AbstractGateway
     public function fetch(array $params)
     {
         return $this->getRepository()->findBy($params);
+    }
+
+    /**
+     * @param int $userId
+     *
+     * @return ArrayCollection
+     */
+    public function fetchAllFriends(int $userId)
+    {
+        /** @var \FlashEvents\Entities\User $user */
+        $user = $this->getRepository()->findOneBy(['id' => $userId]);
+
+        return $user->getFriends();
     }
 }

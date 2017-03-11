@@ -33,15 +33,22 @@ class Users
     public function getAllFriends(Request $request, Response $response) {
         $id = $request->getAttribute('id');
 
-        return $response->withJson($this->getUserManager()->findUserFriends($id));
+        return $response->withJson($this->getUserManager()->findFriends($id));
 
     }
 
     public function getFriend(Request $request, Response $response) {
+        $id = $request->getAttribute('id');
+        $friendId = $request->getAttribute('friend');
 
+        return $response->withJson($this->getUserManager()->findFriend($id, $friendId));
     }
 
     public function addFriend(Request $request, Response $response) {
+        $id = $request->getAttribute('id');
+        $friendData = $request->getAttribute('friend');
+
+        return $response->withJson($this->getUserManager()->addFriend($id, $friendData));
 
     }
 

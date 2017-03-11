@@ -9,6 +9,7 @@
 namespace FlashEvents\Services;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
 use FlashEvents\Entities\EntityInterface;
 
 class User extends AbstractService
@@ -62,8 +63,32 @@ class User extends AbstractService
         return $this->getGateway()->fetchAll();
     }
 
+    /**
+     * @param int $userId
+     *
+     * @return ArrayCollection
+     */
     public function findFriends(int $userId)
     {
         return $this->getGateway()->fetchAllFriends($userId);
+    }
+
+    /**
+     * @param int $userId
+     * @param int $friendId
+     *
+     * @return ArrayCollection|null
+     */
+    public function findFriend(int $userId, int $friendId)
+    {
+        /** @var ArrayCollection $friends */
+        $friends = $this->getGateway()->fetchAllFriends($userId);
+
+        return $friends->get($friendId);
+    }
+
+    public function addFriend(int $id, array $friend)
+    {
+
     }
 }

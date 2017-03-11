@@ -2,8 +2,10 @@
 
 namespace FlashEvents\Entities;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\ManyToMany;
 
 /**
  * @ORM\Entity
@@ -48,6 +50,21 @@ class User implements EntityInterface
      * @var string
      */
     protected $password;
+
+    /**
+     * @ManyToMany(targetEntity="User")
+     * @var ArrayCollection
+     */
+    protected $friends;
+
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        $this->friends = new ArrayCollection();
+    }
+
 
     /**
      * @return int
@@ -155,5 +172,24 @@ class User implements EntityInterface
     {
         $this->password = $password;
         return $this;
+    }
+
+    public function addFriend(User $friend)
+    {
+        $this->friends[] = $friend;
+
+        return $this;
+    }
+
+    public function removeFriend(User $friend)
+    {
+        $this->friends->removeElement($friend);
+
+        return $this;
+    }
+
+    public function getFriends()
+    {
+        return $this->friends;
     }
 }
