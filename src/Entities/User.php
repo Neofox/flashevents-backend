@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\ManyToMany;
 use FlashEvents\Controllers\Users;
+use ngfw\Recipe;
 
 /**
  * @ORM\Entity
@@ -34,7 +35,7 @@ class User implements EntityInterface
     protected $lastName;
 
     /**
-     * @ORM\OneToOne(targetEntity="Address")
+     * @ORM\OneToOne(targetEntity="Address", cascade={"persist"})
      * @JoinColumn(name="id_address", referencedColumnName="id")
      * @var Address
      */
@@ -162,7 +163,7 @@ class User implements EntityInterface
      */
     public function getPassword(): string
     {
-        return $this->password;
+        return Recipe::simpleDecode($this->password);
     }
 
     /**
@@ -171,7 +172,7 @@ class User implements EntityInterface
      */
     public function setPassword(string $password): User
     {
-        $this->password = $password;
+        $this->password = Recipe::simpleEncode($password);
         return $this;
     }
 

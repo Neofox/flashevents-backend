@@ -24,7 +24,7 @@ class User extends AbstractService
      */
     public function create(EntityInterface $entity): EntityInterface
     {
-        // TODO: Implement create() method.
+        return $this->getGateway()->create($entity);
     }
 
     /**
@@ -119,6 +119,8 @@ class User extends AbstractService
         $user->setPassword($params['password']);
         $user->setEmail($params['email']);
         $user->setAddress($this->hydrateAddress($params['address']));
+
+        return $user;
     }
 
     public function hydrateAddress(array $params)

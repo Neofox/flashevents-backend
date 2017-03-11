@@ -32,7 +32,7 @@ class Users
 
     public function create (Request $request, Response $response)
     {
-        $userData = $request->getAttribute('user');
+        $userData = $request->getParam('user');
         $user = $this->getUserManager()->hydrateUser($userData);
 
         return $response->withJson($this->getUserManager()->create($user));

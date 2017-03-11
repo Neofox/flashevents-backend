@@ -30,9 +30,9 @@ class User extends AbstractGateway
         return $this->getRepository()->findBy($params);
     }
 
-    public function create (EntityInterface $user)
+    public function create(EntityInterface $user) : EntityInterface
     {
-        $this->persist($user);
+        return $this->persist($user);
     }
 
     /**
