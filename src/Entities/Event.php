@@ -53,7 +53,7 @@ class Event implements EntityInterface
     protected $endDate;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string")
      * @var float
      */
     protected $cost;
