@@ -9,9 +9,7 @@ use Slim\Http\Response;
 
 $app->get('/', function (Request $request, Response $response) {
 
-    \ngfw\Recipe::debug($this);
-
-    return $response;
+    return $response->getBody()->write('Entre Vehbo et Anthony, ça sent pas la rose');
 });
 
 $app->post('/login',  Users::class . ':login');
