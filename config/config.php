@@ -23,6 +23,7 @@ return [
                 'dbname'   => 'flashevents',
                 'user'     => 'root',
                 'password' => null,
+                'charset'  => 'utf8mb4'
             ]
         ]
     ]

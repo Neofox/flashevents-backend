@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="events")
+ * @ORM\Table(name="events", options={"collate"="utf8mb4_unicode_ci", "charset"="utf8mb4"})
  */
 class Event implements EntityInterface
 {
