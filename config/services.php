@@ -27,11 +27,28 @@ $container['gateway.user'] = function (Container $container) {
     return $gateway;
 };
 
+$container['gateway.provider'] = function (Container $container) {
+
+    $gateway = new \FlashEvents\Gateway\Provider();
+    $gateway->setEm($container->get('em'));
+    $gateway->setEntityClass(\FlashEvents\Entities\Provider::class);
+
+    return $gateway;
+};
+
 //////// MANAGER ////////
 $container['manager.user'] = function (Container $container) {
 
     $manager = new \FlashEvents\Services\User();
     $manager->setGateway($container->get('gateway.user'));
+
+    return $manager;
+};
+
+$container['manager.provider'] = function (Container $container) {
+
+    $manager = new \FlashEvents\Services\Provider();
+    $manager->setGateway($container->get('gateway.provider'));
 
     return $manager;
 };
