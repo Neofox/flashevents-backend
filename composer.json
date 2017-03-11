@@ -1,0 +1,19 @@
+{
+    "name": "flashevent/goc",
+    "authors": [
+        {
+            "name": "Jerome Schaeffer",
+            "email": "j.schaeffer@flash-global.net"
+        }
+    ],
+    "require": {
+        "slim/slim": "^3.0",
+        "oscarotero/psr7-middlewares": "^3.19",
+        "ngfw/recipe": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "FlashEvents\\": "src/"
+        }
+    }
+}
