@@ -5,7 +5,6 @@ namespace FlashEvents\Entities;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
-use FlashEvents\Controllers\events;
 
 /**
  * @ORM\Entity

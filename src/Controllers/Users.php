@@ -6,7 +6,6 @@ namespace FlashEvents\Controllers;
 use FlashEvents\Entities\User;
 use FlashEvents\Services\Traits\SerializerTrait;
 use FlashEvents\Services\Traits\UserManagerTrait;
-use ngfw\Recipe;
 use Psr\Container\ContainerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;

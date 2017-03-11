@@ -13,7 +13,7 @@ use Psr\Container\ContainerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class events
+class Events
 {
     protected $container;
 
