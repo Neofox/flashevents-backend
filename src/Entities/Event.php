@@ -83,7 +83,7 @@ class Event implements EntityInterface
     protected $picture;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      * @var int
      */
     protected $rating;
