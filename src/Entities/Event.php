@@ -2,8 +2,10 @@
 
 namespace FlashEvents\Entities;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
+use FlashEvents\Controllers\events;
 
 /**
  * @ORM\Entity
@@ -25,14 +27,14 @@ class Event implements EntityInterface
     protected $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Provider", mappedBy="events")
+     * @ORM\ManyToOne(targetEntity="Provider")
      * @JoinColumn(name="id_provider", referencedColumnName="id")
-     * @var Provider
+     * @var ArrayCollection
      */
-    protected $provider;
+    protected $providers;
 
     /**
-     * @ORM\OneToOne(targetEntity="Address", mappedBy="event")
+     * @ORM\OneToOne(targetEntity="Address")
      * @JoinColumn(name="id_address", referencedColumnName="id")
      * @var Address
      */
@@ -123,20 +125,32 @@ class Event implements EntityInterface
     }
 
     /**
-     * @return Provider
+     * @return ArrayCollection
      */
-    public function getProvider(): Provider
+    public function getProvider(): ArrayCollection
     {
-        return $this->provider;
+        return $this->providers;
     }
 
     /**
      * @param Provider $provider
      * @return Event
      */
-    public function setIdProvider(Provider $provider): Event
+    public function addProvider(Provider $provider): Event
     {
-        $this->provider = $provider;
+        $this->providers[] = $provider;
+
+        return $this;
+    }
+
+    /**
+     * @param Provider $provider
+     * @return Event
+     */
+    public function removeProvider(Provider $provider): Event
+    {
+        $this->providers->removeElement($provider);
+
         return $this;
     }
 
