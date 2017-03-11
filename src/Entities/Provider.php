@@ -56,6 +56,4 @@ class Provider
         $this->name = $name;
         return $this;
     }
-
-
 }
