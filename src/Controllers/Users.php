@@ -23,6 +23,17 @@ class Users
         $this->setUserManager($container->get('manager.user'));
         $this->setSerializer($container->get('service.serializer'));
     }
+
+    public function login(Request $request, Response $response) {
+        $email = $request->getParam('email');
+        $password = $request->getParam('password');
+
+        $user = $this->getUserManager()->find(['email' => $email, 'password' => $password])[0];
+
+        if (!$user) return $response->withJson(false, 401);
+
+        return $response->withJson($this->getSerializer()->serialize($user));
+    }
     
     public function getAll(Request $request, Response $response) {
         $users = $this->getUserManager()->findAll();

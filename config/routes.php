@@ -14,6 +14,8 @@ $app->get('/', function (Request $request, Response $response) {
     return $response;
 });
 
+$app->post('/login',  Users::class . ':login');
+
 $app->group('/api', function () {
     $this->group('/users', function () {
         $this->get('[/]', Users::class . ':getAll');
