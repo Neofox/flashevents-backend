@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping\JoinColumn;
  * @ORM\Entity
  * @ORM\Table(name="events")
  */
-class Event
+class Event implements EntityInterface
 {
     /**
      * @ORM\Id
