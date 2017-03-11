@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\ManyToMany;
+use FlashEvents\Controllers\Users;
 
 /**
  * @ORM\Entity
@@ -174,21 +175,32 @@ class User implements EntityInterface
         return $this;
     }
 
-    public function addFriend(User $friend)
+    /**
+     * @param User $friend
+     * @return User
+     */
+    public function addFriend(User $friend): User
     {
         $this->friends[] = $friend;
 
         return $this;
     }
 
-    public function removeFriend(User $friend)
+    /**
+     * @param User $friend
+     * @return User
+     */
+    public function removeFriend(User $friend): User
     {
         $this->friends->removeElement($friend);
 
         return $this;
     }
 
-    public function getFriends()
+    /**
+     * @return ArrayCollection
+     */
+    public function getFriends(): ArrayCollection
     {
         return $this->friends;
     }

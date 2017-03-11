@@ -26,7 +26,7 @@ class Token implements EntityInterface
     protected $token;
 
     /**
-     * @ORM\OneToMany(targetEntity="Provider", mappedBy="tokens")
+     * @ORM\ManyToOne(targetEntity="Provider", inversedBy="tokens")
      * @JoinColumn(name="id_provider", referencedColumnName="id")
      * @var Provider
      */

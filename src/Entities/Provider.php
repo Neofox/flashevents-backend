@@ -8,6 +8,7 @@
 
 namespace FlashEvents\Entities;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -30,17 +31,15 @@ class Provider implements EntityInterface
     protected $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Event", inversedBy="provider")
-     * @var Provider
-     */
-    protected $events;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Provider",inversedBy="provider")
-     * @var Token
+     * @ORM\OneToMany(targetEntity="Token", mappedBy="provider")
+     * @var ArrayCollection
      */
     protected $tokens;
 
+    public function __construct()
+    {
+        $this->tokens = new ArrayCollection();
+    }
 
     /**
      * @return int
