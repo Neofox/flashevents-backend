@@ -11,6 +11,7 @@ namespace FlashEvents\Services;
 
 use FlashEvents\Entities\EntityInterface;
 use FlashEvents\Gateway\GatewayInterface;
+use Symfony\Component\Console\Exception\LogicException;
 
 abstract class AbstractService implements ServiceInterface
 {

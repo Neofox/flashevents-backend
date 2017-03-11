@@ -24,7 +24,7 @@ class User extends AbstractService
      */
     public function create(EntityInterface $entity): EntityInterface
     {
-        return $this->getGateway()->create($entity);
+        return $this->getGateway()->persist($entity);
     }
 
     /**
@@ -34,7 +34,7 @@ class User extends AbstractService
      */
     public function update(EntityInterface $entity): EntityInterface
     {
-        // TODO: Implement update() method.
+        return $this->getGateway()->persist($entity);
     }
 
     /**
@@ -63,6 +63,19 @@ class User extends AbstractService
     public function findAll(): array
     {
         return $this->getGateway()->fetchAll();
+    }
+
+    /**
+     * @param int $userId
+     *
+     * @return Address
+     */
+    public function findAddress(int $userId)
+    {
+        /** @var \FlashEvents\Entities\User $user */
+        $user = $this->getGateway()->fetch(['id' => $userId])[0];
+
+        return $user->getAddress();
     }
 
     /**
@@ -111,9 +124,10 @@ class User extends AbstractService
         $this->getGateway()->persist($user);
     }
 
-    public function hydrateUser(array $params)
+    public function hydrateUser(array $params, EntityInterface $entity = null)
     {
-        $user = new UserEntity();
+        $user = empty($entity) ? new UserEntity() : $entity;
+
         $user->setFisrtName($params['firstName']);
         $user->setLastName($params['lastName']);
         $user->setPassword($params['password']);
@@ -123,9 +137,10 @@ class User extends AbstractService
         return $user;
     }
 
-    public function hydrateAddress(array $params)
+    public function hydrateAddress(array $params, EntityInterface $entity = null)
     {
-        $address = new Address();
+        $address = empty($entity) ? new Address() : $entity;
+
         $address->setStreetName($params['streetName']);
         $address->setCity($params['city']);
         $address->setStreetNumber($params['streetNumber']);

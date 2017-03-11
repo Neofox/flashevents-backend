@@ -30,10 +30,8 @@ $app->group('/api', function () {
         });
 
         $this->group('/{id}/addresses', function (){
-            $this->get('[/]', Users::class . ':getAllAddresses');
-            $this->get('/{address}', Users::class . ':getAddress');
-            $this->post('[/]', Users::class . ':addAddress');
-            $this->delete('[/]', Users::class . ':deleteAddress');
+            $this->get('[/]', Users::class . ':getAddress');
+            $this->put('[/]', Users::class . ':updateAddress');
         });
     });
 

@@ -163,7 +163,7 @@ class User implements EntityInterface
      */
     public function getPassword(): string
     {
-        return Recipe::simpleDecode($this->password);
+        return $this->password;
     }
 
     /**
@@ -172,7 +172,7 @@ class User implements EntityInterface
      */
     public function setPassword(string $password): User
     {
-        $this->password = Recipe::simpleEncode($password);
+        $this->password = sha1($password);
         return $this;
     }
 
@@ -199,9 +199,9 @@ class User implements EntityInterface
     }
 
     /**
-     * @return ArrayCollection
+     * @return \Traversable
      */
-    public function getFriends(): ArrayCollection
+    public function getFriends(): \Traversable
     {
         return $this->friends;
     }

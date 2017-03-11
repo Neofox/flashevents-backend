@@ -33,10 +33,4 @@ interface GatewayInterface
      */
     public function persist(EntityInterface $entity) : EntityInterface;
 
-    /**
-     * @param EntityInterface $entity
-     *
-     * @return EntityInterface
-     */
-    public function create(EntityInterface $entity) : EntityInterface;
 }

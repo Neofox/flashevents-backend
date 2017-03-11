@@ -17,6 +17,10 @@ $container['em'] = function (Container $container) {
     return \Doctrine\ORM\EntityManager::create($settings['doctrine']['connection'], $config);
 };
 
+$container['service.serializer'] = function (Container $container) {
+    return new \FlashEvents\Services\Serializer($container->get('em'));
+};
+
 //////// GATEWAY ////////
 $container['gateway.user'] = function (Container $container) {
 

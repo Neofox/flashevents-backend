@@ -2,9 +2,7 @@
 
 namespace FlashEvents\Controllers;
 
-
-use FlashEvents\Services\Provider;
-use FlashEvents\Services\ProviderManagerTrait;
+use FlashEvents\Services\Traits\ProviderManagerTrait;
 use Psr\Container\ContainerInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -14,9 +12,6 @@ class Providers
     use ProviderManagerTrait;
 
     protected $container;
-
-    /** @var Provider */
-    protected $providerManager;
 
     public function __construct(ContainerInterface $container) {
         $this->container = $container;

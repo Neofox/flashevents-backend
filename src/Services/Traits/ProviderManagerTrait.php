@@ -6,8 +6,9 @@
  * Time: 18:34
  */
 
-namespace FlashEvents\Services;
+namespace FlashEvents\Services\Traits;
 
+use FlashEvents\Services\Provider;
 
 trait ProviderManagerTrait
 {
