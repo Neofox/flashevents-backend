@@ -25,4 +25,11 @@ interface GatewayInterface
      * @return EntityInterface|array
      */
     public function fetch(array $params);
+
+    /**
+     * @param EntityInterface $entity
+     *
+     * @return EntityInterface
+     */
+    public function persist(EntityInterface $entity) : EntityInterface;
 }

@@ -30,6 +30,14 @@ class Users
         return $response->withJson($this->getUserManager()->find(['id' => $id]));
     }
 
+    public function create (Request $request, Response $response)
+    {
+        $userData = $request->getAttribute('user');
+        $user = $this->getUserManager()->hydrateUser($userData);
+
+        return $response->withJson($this->getUserManager()->create($user));
+    }
+
     public function getAllFriends(Request $request, Response $response) {
         $id = $request->getAttribute('id');
 
@@ -53,7 +61,10 @@ class Users
     }
 
     public function deleteFriend(Request $request, Response $response) {
+        $id = $request->getAttribute('id');
+        $friendId = $request->getAttribute('friend');
 
+        return $response->withJson($this->getUserManager()->removeFriend($id, $friendId));
     }
 
     public function getAllAddresses(Request $request, Response $response) {
@@ -64,7 +75,7 @@ class Users
 
     }
 
-    public function addAddress(Request $request, Response $response) {
+    public function addAddress(Request $prequest, Response $response) {
 
     }
 

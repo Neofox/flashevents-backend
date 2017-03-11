@@ -9,6 +9,7 @@
 namespace FlashEvents\Services;
 
 
+use FlashEvents\Entities\EntityInterface;
 use FlashEvents\Gateway\GatewayInterface;
 
 abstract class AbstractService implements ServiceInterface
@@ -36,6 +37,5 @@ abstract class AbstractService implements ServiceInterface
 
         return $this;
     }
-
 
 }

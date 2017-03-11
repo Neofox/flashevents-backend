@@ -30,6 +30,11 @@ class User extends AbstractGateway
         return $this->getRepository()->findBy($params);
     }
 
+    public function create (EntityInterface $user)
+    {
+        $this->persist($user);
+    }
+
     /**
      * @param int $userId
      *
@@ -42,4 +47,5 @@ class User extends AbstractGateway
 
         return $user->getFriends();
     }
+
 }

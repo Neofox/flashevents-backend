@@ -4,6 +4,7 @@ namespace FlashEvents\Gateway;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
+use FlashEvents\Entities\EntityInterface;
 
 abstract class AbstractGateway implements GatewayInterface
 {
@@ -60,5 +61,14 @@ abstract class AbstractGateway implements GatewayInterface
         $this->em = $em;
 
         return $this;
+    }
+
+
+    public function persist(EntityInterface $entity) : EntityInterface
+    {
+        $this->getEm()->persist($entity);
+        $this->getEm()->flush();
+
+        return $entity;
     }
 }
