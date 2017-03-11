@@ -1,48 +1,45 @@
 <?php
 
-namespace App;
+namespace FlashEvents\Gateway;
 
 use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\Tools\Setup;
 
-abstract class AbstractResource
+abstract class AbstractGateway
 {
-    /**
-     * @var \Doctrine\ORM\EntityManager
-     */
-    private $entityManager = null;
 
     /**
-     * @return \Doctrine\ORM\EntityManager
+     * @var EntityManager
      */
-    public function getEntityManager()
+    protected $em;
+
+
+    /**
+     * Gateway constructor.
+     *
+     * @param EntityManager $em
+     */
+    public function __construct(EntityManager $em)
     {
-        if ($this->entityManager === null) {
-            $this->entityManager = $this->createEntityManager();
-        }
-
-        return $this->entityManager;
+        $this->em = $em;
     }
 
     /**
      * @return EntityManager
      */
-    public function createEntityManager()
+    public function getEm(): EntityManager
     {
-        $path = array('Path/To/Entity');
-        $devMode = true;
+        return $this->em;
+    }
 
-        $config = Setup::createAnnotationMetadataConfiguration($path, $devMode);
+    /**
+     * @param EntityManager $em
+     *
+     * @return $this
+     */
+    public function setEm(EntityManager $em)
+    {
+        $this->em = $em;
 
-        // define credentials...
-        $connectionOptions = array(
-            'driver'   => '',
-            'host'     => '',
-            'dbname'   => '',
-            'user'     => '',
-            'password' => '',
-        );
-
-        return EntityManager::create($connectionOptions, $config);
+        return $this;
     }
 }
