@@ -13,7 +13,7 @@ class User extends AbstractGateway
     /**
      * @return array
      */
-    public function fetchAll() {
+    public function fetchAll() : array {
         return $this->getRepository()->findAll();
     }
 

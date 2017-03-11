@@ -5,6 +5,18 @@ use Slim\Container;
 /** @var Container $container */
 $container = $app->getContainer();
 
+$container['em'] = function (Container $container) {
+    $settings = $container->get('settings');
+    $config = \Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration(
+        $settings['doctrine']['meta']['entity_path'],
+        $settings['doctrine']['meta']['auto_generate_proxies'],
+        $settings['doctrine']['meta']['proxy_dir'],
+        $settings['doctrine']['meta']['cache'],
+        false
+    );
+    return \Doctrine\ORM\EntityManager::create($settings['doctrine']['connection'], $config);
+};
+
 //////// GATEWAY ////////
 $container['gateway.user'] = function (Container $container) {
 
