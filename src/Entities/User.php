@@ -2,35 +2,49 @@
 
 namespace FlashEvents\Entities;
 
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="users")
+ */
 class User
 {
     /**
-     * @var int
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
     /**
+     * @ORM\Column(type="string")
      * @var string
      */
     protected $fisrtName;
 
     /**
+     * @ORM\Column(type="string")
      * @var string
      */
     protected $lastName;
 
     /**
+     * @ORM\OneToOne(targetEntity="Address")
+     * @JoinColumn(name="id_address", referencedColumnName="id")
      * @var Address
      */
-    protected $idAddress;
+    protected $address;
 
     /**
+     * @ORM\Column(type="string")
      * @var string
      */
     protected $email;
 
     /**
+     * @ORM\Column(type="string")
      * @var string
      */
     protected $password;
@@ -92,18 +106,18 @@ class User
     /**
      * @return Address
      */
-    public function getIdAddress(): Address
+    public function getAddress(): Address
     {
-        return $this->idAddress;
+        return $this->address;
     }
 
     /**
-     * @param Address $idAddress
+     * @param Address $address
      * @return User
      */
-    public function setIdAddress(Address $idAddress): User
+    public function setAddress(Address $address): User
     {
-        $this->idAddress = $idAddress;
+        $this->address = $address;
         return $this;
     }
 

@@ -8,18 +8,39 @@
 
 namespace FlashEvents\Entities;
 
+use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="providers")
+ */
 class Provider
 {
     /**
-     * @var int
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
     /**
+     * @ORM\Column(type="string")
      * @var string
      */
     protected $name;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Event", inversedBy="provider")
+     * @var Provider
+     */
+    protected $events;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Provider",inversedBy="provider")
+     * @var Token
+     */
+    protected $tokens;
+
 
     /**
      * @return int

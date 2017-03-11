@@ -2,59 +2,80 @@
 
 namespace FlashEvents\Entities;
 
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="events")
+ */
 class Event
 {
     /**
-     * @var int
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
     /**
+     * @ORM\Column(type="string")
      * @var string
      */
     protected $name;
 
     /**
+     * @ORM\OneToMany(targetEntity="Provider", mappedBy="events")
+     * @JoinColumn(name="id_provider", referencedColumnName="id")
      * @var Provider
      */
-    protected $idProvider;
+    protected $provider;
 
     /**
+     * @ORM\OneToOne(targetEntity="Address", mappedBy="event")
+     * @JoinColumn(name="id_address", referencedColumnName="id")
      * @var Address
      */
-    protected $idAddress;
+    protected $address;
 
     /**
+     * @ORM\Column(type="datetime")
      * @var \DateTime
      */
     protected $startDate;
 
     /**
+     * @ORM\Column(type="datetime")
      * @var \DateTime
      */
     protected $endDate;
 
     /**
+     * @ORM\Column(type="datetime")
      * @var float
      */
     protected $cost;
 
     /**
+     * @ORM\Column(type="string")
      * @var string
      */
     protected $eventLink;
 
     /**
+     * @ORM\Column(type="text")
      * @var string
      */
     protected $description;
 
     /**
+     * @ORM\Column(type="string")
      * @var string
      */
     protected $picture;
 
     /**
+     * @ORM\Column(type="integer")
      * @var int
      */
     protected $rating;
@@ -98,36 +119,36 @@ class Event
     /**
      * @return Provider
      */
-    public function getIdProvider(): Provider
+    public function getProvider(): Provider
     {
-        return $this->idProvider;
+        return $this->provider;
     }
 
     /**
-     * @param Provider $idProvider
+     * @param Provider $provider
      * @return Event
      */
-    public function setIdProvider(Provider $idProvider): Event
+    public function setIdProvider(Provider $provider): Event
     {
-        $this->idProvider = $idProvider;
+        $this->provider = $provider;
         return $this;
     }
 
     /**
      * @return Address
      */
-    public function getIdAddress(): Address
+    public function getAddress(): Address
     {
-        return $this->idAddress;
+        return $this->address;
     }
 
     /**
-     * @param Address $idAddress
+     * @param Address $address
      * @return Event
      */
-    public function setIdAddress(Address $idAddress): Event
+    public function setAddress(Address $address): Event
     {
-        $this->idAddress = $idAddress;
+        $this->address = $address;
         return $this;
     }
 

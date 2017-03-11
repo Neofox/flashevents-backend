@@ -2,40 +2,53 @@
 
 namespace FlashEvents\Entities;
 
+use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="addresses")
+ */
 class Address
 {
     /**
-     * @var int
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
     /**
+     * @ORM\Column(type="string")
      * @var string
      */
     protected $city;
 
     /**
+     * @ORM\Column(type="string")
      * @var string
      */
     protected $zipCode;
 
     /**
+     * @ORM\Column(type="string")
      * @var string
      */
     protected $streetName;
 
     /**
+     * @ORM\Column(type="string")
      * @var string
      */
     protected $streetNumber;
 
     /**
+     * @ORM\Column(type="string")
      * @var float
      */
     protected $longitude;
 
     /**
+     * @ORM\Column(type="string")
      * @var float
      */
     protected $latitude;

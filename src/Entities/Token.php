@@ -2,25 +2,39 @@
 
 namespace FlashEvents\Entities;
 
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="tokens")
+ */
 class Token
 {
+
     /**
-     * @var int
+     * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 
     /**
+     * @ORM\Column(type="string")
      * @var string
      */
     protected $token;
 
     /**
+     * @ORM\OneToMany(targetEntity="Provider", mappedBy="tokens")
+     * @JoinColumn(name="id_provider", referencedColumnName="id")
      * @var Provider
      */
     protected $provider;
 
     /**
+     * @ORM\OneToOne(targetEntity="User")
+     * @JoinColumn(name="id_user", referencedColumnName="id")
      * @var User
      */
     protected $user;
