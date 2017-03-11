@@ -188,6 +188,18 @@ class User implements EntityInterface
     }
 
     /**
+     * @param array $friends
+     * @return User
+     */
+    public function setFriends(array $friends): User
+    {
+        $friends = new ArrayCollection($friends);
+        $this->friends = $friends;
+
+        return $this;
+    }
+
+    /**
      * @param User $friend
      * @return User
      */

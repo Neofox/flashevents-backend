@@ -10,11 +10,14 @@
         "slim/slim": "^3.0",
         "oscarotero/psr7-middlewares": "^3.19",
         "ngfw/recipe": "^1.2",
-        "doctrine/orm": "^2.5"
+        "doctrine/orm": "^2.5",
+        "doctrine/data-fixtures" : "^1.2",
+        "fzaninotto/faker" : "^1.6"
     },
     "autoload": {
         "psr-4": {
-            "FlashEvents\\": "src/"
+            "FlashEvents\\": "src/",
+            "FlashEvents\\DataFixtures\\": "fixtures/"
         }
     }
 }
