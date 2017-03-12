@@ -174,7 +174,7 @@ class Event implements EntityInterface
     /**
      * @return \DateTime
      */
-    public function getStartDate(): \DateTime
+    public function getStartDate(): ?\DateTime
     {
         return $this->startDate;
     }
@@ -196,7 +196,7 @@ class Event implements EntityInterface
     /**
      * @return \DateTime
      */
-    public function getEndDate(): \DateTime
+    public function getEndDate(): ?\DateTime
     {
         return $this->endDate;
     }
@@ -220,16 +220,16 @@ class Event implements EntityInterface
      */
     public function getCost(): float
     {
-        return $this->cost;
+        return (float)$this->cost;
     }
 
     /**
      * @param float $cost
      * @return Event
      */
-    public function setCost(float $cost): Event
+    public function setCost($cost): Event
     {
-        $this->cost = $cost;
+        $this->cost = (float)$cost;
         return $this;
     }
 
@@ -298,7 +298,7 @@ class Event implements EntityInterface
      * @param string $picture
      * @return Event
      */
-    public function setPicture(string $picture): Event
+    public function setPicture(?string $picture): Event
     {
         $this->picture = $picture;
         return $this;
@@ -307,7 +307,7 @@ class Event implements EntityInterface
     /**
      * @return int
      */
-    public function getRating(): int
+    public function getRating(): ?int
     {
         return $this->rating;
     }

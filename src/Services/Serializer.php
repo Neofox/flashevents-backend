@@ -75,9 +75,9 @@ class Serializer
 
             if ($object instanceof PersistentCollection) {
                 foreach ($object as $item) {
-                    $data[$field] = $this->serialize($object);
+                    $data[$field] = $this->serialize($item);
                 }
-            } else {
+            } else if (!empty($object)) {
                 $data[$field] = $this->serialize($object);
             }
         }
