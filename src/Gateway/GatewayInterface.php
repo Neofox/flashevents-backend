@@ -17,7 +17,7 @@ interface GatewayInterface
     /**
      * @return array
      */
-    public function fetchAll() : array ;
+    public function fetchAll(): array;
 
     /**
      * @param array $params
@@ -31,6 +31,6 @@ interface GatewayInterface
      *
      * @return EntityInterface
      */
-    public function persist(EntityInterface $entity) : EntityInterface;
+    public function persist(EntityInterface $entity): EntityInterface;
 
 }

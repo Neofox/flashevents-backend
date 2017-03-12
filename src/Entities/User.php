@@ -78,11 +78,13 @@ class User implements EntityInterface
 
     /**
      * @param int $id
+     *
      * @return User
      */
     public function setId(int $id): User
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -96,11 +98,13 @@ class User implements EntityInterface
 
     /**
      * @param string $fisrtName
+     *
      * @return User
      */
     public function setFisrtName(string $fisrtName): User
     {
         $this->fisrtName = $fisrtName;
+
         return $this;
     }
 
@@ -114,11 +118,13 @@ class User implements EntityInterface
 
     /**
      * @param string $lastName
+     *
      * @return User
      */
     public function setLastName(string $lastName): User
     {
         $this->lastName = $lastName;
+
         return $this;
     }
 
@@ -132,11 +138,13 @@ class User implements EntityInterface
 
     /**
      * @param Address $address
+     *
      * @return User
      */
     public function setAddress(Address $address): User
     {
         $this->address = $address;
+
         return $this;
     }
 
@@ -150,11 +158,13 @@ class User implements EntityInterface
 
     /**
      * @param string $email
+     *
      * @return User
      */
     public function setEmail(string $email): User
     {
         $this->email = $email;
+
         return $this;
     }
 
@@ -168,16 +178,19 @@ class User implements EntityInterface
 
     /**
      * @param string $password
+     *
      * @return User
      */
     public function setPassword(string $password): User
     {
         $this->password = sha1($password);
+
         return $this;
     }
 
     /**
      * @param User $friend
+     *
      * @return User
      */
     public function addFriend(User $friend): User
@@ -189,6 +202,7 @@ class User implements EntityInterface
 
     /**
      * @param array $friends
+     *
      * @return User
      */
     public function setFriends(array $friends): User
@@ -201,6 +215,7 @@ class User implements EntityInterface
 
     /**
      * @param User $friend
+     *
      * @return User
      */
     public function removeFriend(User $friend): User

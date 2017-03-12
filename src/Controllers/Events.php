@@ -16,21 +16,23 @@ class Events
 
     protected $container;
 
-    public function __construct(ContainerInterface $container) {
+    public function __construct(ContainerInterface $container)
+    {
         $this->container = $container;
         $this->setEventManager($container->get('manager.event'));
         $this->setSerializer($container->get('service.serializer'));
     }
 
-    public function getAll(Request $request, Response $response) {
+    public function getAll(Request $request, Response $response)
+    {
         $event = $this->getEventManager()->findAll();
 
         return $response->withJson($this->getSerializer()->serializeEntities($event));
     }
 
-    public function get(Request $request, Response $response) {
+    public function get(Request $request, Response $response)
+    {
         $id = $request->getAttribute('id');
-
         $event = $this->getEventManager()->find(['id' => $id]);
 
         return $response->withJson($this->getSerializer()->serializeEntities($event));

@@ -18,21 +18,21 @@ interface ServiceInterface
      *
      * @return EntityInterface
      */
-    public function create(EntityInterface $entity) : EntityInterface;
+    public function create(EntityInterface $entity): EntityInterface;
 
     /**
      * @param EntityInterface $entity
      *
      * @return EntityInterface
      */
-    public function update(EntityInterface $entity) : EntityInterface;
+    public function update(EntityInterface $entity): EntityInterface;
 
     /**
      * @param EntityInterface $entity
      *
      * @return bool
      */
-    public function delete(EntityInterface $entity) : bool;
+    public function delete(EntityInterface $entity): bool;
 
     /**
      * @param array $params
@@ -44,5 +44,5 @@ interface ServiceInterface
     /**
      * @return array
      */
-    public function findAll() : array;
+    public function findAll(): array;
 }

@@ -53,6 +53,7 @@ class Serializer
      * Serialize entity to array
      *
      * @param $entityObject
+     *
      * @return array
      */
     public function serialize(EntityInterface $entityObject)
@@ -62,14 +63,12 @@ class Serializer
         $className = get_class($entityObject);
         $metaData = $this->em->getClassMetadata($className);
 
-        foreach ($metaData->fieldMappings as $field => $mapping)
-        {
+        foreach ($metaData->fieldMappings as $field => $mapping) {
             $method = "get" . ucfirst($field);
             $data[$field] = call_user_func([$entityObject, $method]);
         }
 
-        foreach ($metaData->associationMappings as $field => $mapping)
-        {
+        foreach ($metaData->associationMappings as $field => $mapping) {
             // Sort of entity object
             $object = $metaData->reflFields[$field]->getValue($entityObject);
 
@@ -77,8 +76,10 @@ class Serializer
                 foreach ($object as $item) {
                     $data[$field] = $this->serialize($item);
                 }
-            } else if (!empty($object)) {
-                $data[$field] = $this->serialize($object);
+            } else {
+                if (!empty($object)) {
+                    $data[$field] = $this->serialize($object);
+                }
             }
         }
 

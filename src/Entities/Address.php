@@ -63,11 +63,13 @@ class Address implements EntityInterface
 
     /**
      * @param int $id
+     *
      * @return Address
      */
     public function setId(int $id): Address
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -81,11 +83,13 @@ class Address implements EntityInterface
 
     /**
      * @param string $city
+     *
      * @return Address
      */
     public function setCity(string $city): Address
     {
         $this->city = $city;
+
         return $this;
     }
 
@@ -99,11 +103,13 @@ class Address implements EntityInterface
 
     /**
      * @param string $zipCode
+     *
      * @return Address
      */
     public function setZipCode(string $zipCode): Address
     {
         $this->zipCode = $zipCode;
+
         return $this;
     }
 
@@ -117,11 +123,13 @@ class Address implements EntityInterface
 
     /**
      * @param string $streetName
+     *
      * @return Address
      */
     public function setStreetName(string $streetName): Address
     {
         $this->streetName = $streetName;
+
         return $this;
     }
 
@@ -135,11 +143,13 @@ class Address implements EntityInterface
 
     /**
      * @param string $streetNumber
+     *
      * @return Address
      */
     public function setStreetNumber(string $streetNumber): Address
     {
         $this->streetNumber = $streetNumber;
+
         return $this;
     }
 
@@ -153,11 +163,13 @@ class Address implements EntityInterface
 
     /**
      * @param float $longitude
+     *
      * @return Address
      */
     public function setLongitude(float $longitude): Address
     {
         $this->longitude = $longitude;
+
         return $this;
     }
 
@@ -171,11 +183,13 @@ class Address implements EntityInterface
 
     /**
      * @param float $latitude
+     *
      * @return Address
      */
     public function setLatitude(float $latitude): Address
     {
         $this->latitude = $latitude;
+
         return $this;
     }
 }

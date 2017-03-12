@@ -15,7 +15,8 @@ class User extends AbstractGateway
     /**
      * @return array
      */
-    public function fetchAll() : array {
+    public function fetchAll(): array
+    {
         return $this->getRepository()->findAll();
     }
 
@@ -34,7 +35,7 @@ class User extends AbstractGateway
      *
      * @return \Traversable
      */
-    public function fetchAllFriends(int $userId) : \Traversable
+    public function fetchAllFriends(int $userId): \Traversable
     {
         /** @var \FlashEvents\Entities\User $user */
         $user = $this->getRepository()->findOneBy(['id' => $userId]);

@@ -51,11 +51,13 @@ class Provider implements EntityInterface
 
     /**
      * @param int $id
+     *
      * @return Provider
      */
     public function setId(int $id): Provider
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -69,11 +71,13 @@ class Provider implements EntityInterface
 
     /**
      * @param string $name
+     *
      * @return Provider
      */
     public function setName(string $name): Provider
     {
         $this->name = $name;
+
         return $this;
     }
 }

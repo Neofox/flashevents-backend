@@ -97,11 +97,13 @@ class Event implements EntityInterface
 
     /**
      * @param int $id
+     *
      * @return Event
      */
     public function setId(int $id): Event
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -115,11 +117,13 @@ class Event implements EntityInterface
 
     /**
      * @param string $name
+     *
      * @return Event
      */
     public function setName(string $name): Event
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -133,6 +137,7 @@ class Event implements EntityInterface
 
     /**
      * @param Provider $provider
+     *
      * @return Event
      */
     public function addProvider(Provider $provider): Event
@@ -144,6 +149,7 @@ class Event implements EntityInterface
 
     /**
      * @param Provider $provider
+     *
      * @return Event
      */
     public function removeProvider(Provider $provider): Event
@@ -163,11 +169,13 @@ class Event implements EntityInterface
 
     /**
      * @param Address $address
+     *
      * @return Event
      */
     public function setAddress(Address $address): Event
     {
         $this->address = $address;
+
         return $this;
     }
 
@@ -181,15 +189,17 @@ class Event implements EntityInterface
 
     /**
      * @param \DateTime|string $startDate
+     *
      * @return Event
      */
     public function setStartDate($startDate): Event
     {
-        if(is_string($startDate)){
+        if (is_string($startDate)) {
             $startDate = new \DateTime($startDate);
         }
 
         $this->startDate = $startDate;
+
         return $this;
     }
 
@@ -203,15 +213,17 @@ class Event implements EntityInterface
 
     /**
      * @param \DateTime|string $endDate
+     *
      * @return Event
      */
     public function setEndDate($endDate): Event
     {
-        if(is_string($endDate)){
+        if (is_string($endDate)) {
             $endDate = new \DateTime($endDate);
         }
 
         $this->endDate = $endDate;
+
         return $this;
     }
 
@@ -225,11 +237,13 @@ class Event implements EntityInterface
 
     /**
      * @param float $cost
+     *
      * @return Event
      */
     public function setCost($cost): Event
     {
         $this->cost = (float)$cost;
+
         return $this;
     }
 
@@ -243,11 +257,13 @@ class Event implements EntityInterface
 
     /**
      * @param string $eventLink
+     *
      * @return Event
      */
     public function setEventLink(string $eventLink): Event
     {
         $this->eventLink = $eventLink;
+
         return $this;
     }
 
@@ -261,11 +277,13 @@ class Event implements EntityInterface
 
     /**
      * @param string $description
+     *
      * @return Event
      */
     public function setDescription(string $description): Event
     {
         $this->description = $description;
+
         return $this;
     }
 
@@ -283,6 +301,7 @@ class Event implements EntityInterface
     public function setCategory(string $category)
     {
         $this->category = $category;
+
         return $this;
     }
 
@@ -296,11 +315,13 @@ class Event implements EntityInterface
 
     /**
      * @param string $picture
+     *
      * @return Event
      */
     public function setPicture(?string $picture): Event
     {
         $this->picture = $picture;
+
         return $this;
     }
 
@@ -314,11 +335,13 @@ class Event implements EntityInterface
 
     /**
      * @param int $rating
+     *
      * @return Event
      */
     public function setRating(int $rating): Event
     {
         $this->rating = $rating;
+
         return $this;
     }
 }

@@ -15,35 +15,39 @@ class Users
     use UserManagerTrait;
     use SerializerTrait;
 
-    /** @var ContainerInterface  */
+    /** @var ContainerInterface */
     protected $container;
 
-    public function __construct(ContainerInterface $container) {
+    public function __construct(ContainerInterface $container)
+    {
         $this->container = $container;
         $this->setUserManager($container->get('manager.user'));
         $this->setSerializer($container->get('service.serializer'));
     }
 
-    public function login(Request $request, Response $response) {
+    public function login(Request $request, Response $response)
+    {
         $email = $request->getParam('email');
         $password = $request->getParam('password');
-
         $user = $this->getUserManager()->find(['email' => $email, 'password' => sha1($password)])[0];
 
-        if (!$user) return $response->withJson(false, 401);
+        if (!$user) {
+            return $response->withJson(false, 401);
+        }
 
         return $response->withJson($this->getSerializer()->serialize($user));
     }
-    
-    public function getAll(Request $request, Response $response) {
+
+    public function getAll(Request $request, Response $response)
+    {
         $users = $this->getUserManager()->findAll();
 
         return $response->withJson($this->getSerializer()->serializeEntities($users));
     }
 
-    public function get(Request $request, Response $response) {
+    public function get(Request $request, Response $response)
+    {
         $id = $request->getAttribute('id');
-
         $user = $this->getUserManager()->find(['id' => $id]);
 
         return $response->withJson($this->getSerializer()->serializeEntities($user));
@@ -57,42 +61,48 @@ class Users
         return $response->withJson($this->getUserManager()->create($user));
     }
 
-    public function getAllFriends(Request $request, Response $response) {
+    public function getAllFriends(Request $request, Response $response)
+    {
         $id = $request->getAttribute('id');
 
         return $response->withJson($this->getUserManager()->findFriends($id));
 
     }
 
-    public function getFriend(Request $request, Response $response) {
+    public function getFriend(Request $request, Response $response)
+    {
         $id = $request->getAttribute('id');
         $friendId = $request->getAttribute('friend');
 
         return $response->withJson($this->getUserManager()->findFriend($id, $friendId));
     }
 
-    public function addFriend(Request $request, Response $response) {
+    public function addFriend(Request $request, Response $response)
+    {
         $id = $request->getAttribute('id');
         $friendData = $request->getAttribute('friend');
 
         return $response->withJson($this->getUserManager()->addFriend($id, $friendData));
     }
 
-    public function deleteFriend(Request $request, Response $response) {
+    public function deleteFriend(Request $request, Response $response)
+    {
         $id = $request->getAttribute('id');
         $friendId = $request->getAttribute('friend');
 
         return $response->withJson($this->getUserManager()->removeFriend($id, $friendId));
     }
 
-    public function getAddress(Request $request, Response $response) {
+    public function getAddress(Request $request, Response $response)
+    {
         $id = $request->getAttribute('id');
         $address = $this->getUserManager()->findAddress($id);
 
         return $response->withJson($this->getSerializer()->serialize($address));
     }
 
-    public function updateAddress(Request $request, Response $response) {
+    public function updateAddress(Request $request, Response $response)
+    {
         $id = $request->getAttribute('id');
         $addressData = $request->getParam('address');
 
@@ -105,8 +115,8 @@ class Users
         return $response->withJson($this->getUserManager()->update($user));
     }
 
-    public function deleteAddress(Request $request, Response $response) {
-
+    public function deleteAddress(Request $request, Response $response)
+    {
     }
 
 }

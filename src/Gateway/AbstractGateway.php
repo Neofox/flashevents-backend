@@ -64,7 +64,7 @@ abstract class AbstractGateway implements GatewayInterface
     }
 
 
-    public function persist(EntityInterface $entity) : EntityInterface
+    public function persist(EntityInterface $entity): EntityInterface
     {
         $this->getEm()->persist($entity);
         $this->getEm()->flush();

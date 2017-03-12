@@ -49,11 +49,13 @@ class Token implements EntityInterface
 
     /**
      * @param int $id
+     *
      * @return Token
      */
     public function setId($id)
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -67,11 +69,13 @@ class Token implements EntityInterface
 
     /**
      * @param string $token
+     *
      * @return Token
      */
     public function setToken($token)
     {
         $this->token = $token;
+
         return $this;
     }
 
@@ -85,11 +89,13 @@ class Token implements EntityInterface
 
     /**
      * @param Provider $provider
+     *
      * @return Token
      */
     public function setProvider($provider)
     {
         $this->provider = $provider;
+
         return $this;
     }
 
@@ -103,11 +109,13 @@ class Token implements EntityInterface
 
     /**
      * @param User $user
+     *
      * @return Token
      */
     public function setUser($user)
     {
         $this->user = $user;
+
         return $this;
     }
 }
