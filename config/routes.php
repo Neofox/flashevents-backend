@@ -12,7 +12,7 @@ $app->get('/', function (Request $request, Response $response) {
     return $response->getBody()->write('Entre Vehbo et Anthony, ça sent pas la rose');
 });
 
-$app->get('/login',  Users::class . ':login');
+$app->post('/login',  Users::class . ':login');
 
 $app->group('/api', function () {
     $this->group('/users', function () {
