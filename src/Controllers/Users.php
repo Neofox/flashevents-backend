@@ -28,7 +28,7 @@ class Users
         $email = $request->getParam('email');
         $password = $request->getParam('password');
 
-        $user = $this->getUserManager()->find(['email' => $email, 'password' => $password])[0];
+        $user = $this->getUserManager()->find(['email' => $email, 'password' => sha1($password)])[0];
 
         if (!$user) return $response->withJson(false, 401);
 
@@ -76,7 +76,6 @@ class Users
         $friendData = $request->getAttribute('friend');
 
         return $response->withJson($this->getUserManager()->addFriend($id, $friendData));
-
     }
 
     public function deleteFriend(Request $request, Response $response) {
