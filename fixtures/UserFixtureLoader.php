@@ -52,10 +52,10 @@ class UserFixtureLoader implements FixtureInterface
 
 
         $user = new User();
-        $user->setPassword('root')
+        $user->setPassword('password')
              ->setLastName($faker->lastName)
              ->setFisrtName($faker->firstName)
-             ->setEmail('root@root.fr')
+             ->setEmail('test@email.lu')
              ->setAddress($address);
 
         $manager->persist($user);

@@ -35,7 +35,7 @@ class EventFixtureLoader implements FixtureInterface
             $event = new Event();
             $event->setCost($faker->numberBetween(0, 100))
                 ->setAddress($address)
-                ->setCategory('music')
+                ->setCategory($faker->randomElement(['music', 'meeting', 'theater']))
                 ->setDescription($faker->text())
                 ->setStartDate($faker->dateTimeThisMonth)
                 ->setEndDate($faker->dateTimeThisMonth)

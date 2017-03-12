@@ -2,7 +2,6 @@
 
 namespace FlashEvents\Controllers;
 
-
 use FlashEvents\Entities\User;
 use FlashEvents\Services\Traits\SerializerTrait;
 use FlashEvents\Services\Traits\UserManagerTrait;
@@ -120,7 +119,7 @@ class Users
     {
         $id = $request->getAttribute('id');
         $user = $this->getUserManager()->find(['id' => $id]);
-        
+
         if(!$user) return $response->withJson(sprintf('User with id %s unknow', $id));
         $this->getUserManager()->delete($user);
 
