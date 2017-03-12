@@ -19,7 +19,7 @@ class Event extends AbstractGateway
      */
     public function fetchAll(): array
     {
-        // TODO: Implement fetchAll() method.
+        return $this->getRepository()->findAll();
     }
 
     /**
@@ -29,6 +29,6 @@ class Event extends AbstractGateway
      */
     public function fetch(array $params)
     {
-        // TODO: Implement fetch() method.
+        return $this->getRepository()->findBy($params);
     }
 }

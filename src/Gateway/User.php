@@ -41,5 +41,4 @@ class User extends AbstractGateway
 
         return $user->getFriends();
     }
-
 }

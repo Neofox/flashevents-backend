@@ -40,6 +40,15 @@ $container['gateway.provider'] = function (Container $container) {
     return $gateway;
 };
 
+$container['gateway.event'] = function (Container $container) {
+
+    $gateway = new \FlashEvents\Gateway\Event();
+    $gateway->setEm($container->get('em'));
+    $gateway->setEntityClass(\FlashEvents\Entities\Event::class);
+
+    return $gateway;
+};
+
 //////// MANAGER ////////
 $container['manager.user'] = function (Container $container) {
 
@@ -53,6 +62,14 @@ $container['manager.provider'] = function (Container $container) {
 
     $manager = new \FlashEvents\Services\Provider();
     $manager->setGateway($container->get('gateway.provider'));
+
+    return $manager;
+};
+
+$container['manager.event'] = function (Container $container) {
+
+    $manager = new \FlashEvents\Services\Event();
+    $manager->setGateway($container->get('gateway.event'));
 
     return $manager;
 };
