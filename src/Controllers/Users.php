@@ -32,7 +32,7 @@ class Users
         $user = $this->getUserManager()->find(['email' => $email, 'password' => sha1($password)])[0];
 
         if (!$user) {
-            return $response->withJson(false, 401);
+            return $response->withJson('Unauthorized', 401);
         }
 
         return $response->withJson($this->getSerializer()->serialize($user));
@@ -57,8 +57,9 @@ class Users
     {
         $userData = $request->getParam('user');
         $user = $this->getUserManager()->hydrateUser($userData);
+        $this->getUserManager()->create($user);
 
-        return $response->withJson($this->getUserManager()->create($user));
+        return $response->withJson('Created', 201);
     }
 
     public function getAllFriends(Request $request, Response $response)
@@ -89,8 +90,9 @@ class Users
     {
         $id = $request->getAttribute('id');
         $friendId = $request->getAttribute('friend');
+        $this->getUserManager()->removeFriend($id, $friendId);
 
-        return $response->withJson($this->getUserManager()->removeFriend($id, $friendId));
+        return $response->withJson('Deleted.', 204);
     }
 
     public function getAddress(Request $request, Response $response)
@@ -109,14 +111,20 @@ class Users
         /** @var User $user */
         $user = $this->getUserManager()->find(['id' => $id])[0];
         $address = $this->getUserManager()->hydrateAddress($addressData, $user->getAddress());
-
         $user->setAddress($address);
 
-        return $response->withJson($this->getUserManager()->update($user));
+        return $response->withJson($this->getSerializer()->serialize($this->getUserManager()->update($user)));
     }
 
     public function deleteAddress(Request $request, Response $response)
     {
+        $id = $request->getAttribute('id');
+        $user = $this->getUserManager()->find(['id' => $id]);
+        
+        if(!$user) return $response->withJson(sprintf('User with id %s unknow', $id));
+        $this->getUserManager()->delete($user);
+
+        return $response->withJson('Deleted.', 204);
     }
 
 }
