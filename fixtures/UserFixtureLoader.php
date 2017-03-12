@@ -40,6 +40,26 @@ class UserFixtureLoader implements FixtureInterface
 
             $manager->persist($user);
         }
+
+
+        $address = new Address();
+        $address->setCity($faker->city)
+                ->setZipCode($faker->postcode)
+                ->setLatitude($faker->latitude)
+                ->setLongitude($faker->longitude)
+                ->setStreetName($faker->streetName)
+                ->setStreetNumber($faker->buildingNumber);
+
+
+        $user = new User();
+        $user->setPassword('root')
+             ->setLastName($faker->lastName)
+             ->setFisrtName($faker->firstName)
+             ->setEmail('root@root.fr')
+             ->setAddress($address);
+
+        $manager->persist($user);
+
         $manager->flush();
     }
 }
