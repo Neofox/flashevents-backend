@@ -21,8 +21,8 @@ return [
                 'driver'   => 'pdo_mysql',
                 'host'     => 'localhost',
                 'dbname'   => 'flashevents',
-                'user'     => 'root',
-                'password' => null,
+                'user'     => 'flashevents',
+                'password' => '30575flashevents',
                 'charset'  => 'utf8mb4'
             ]
         ]
