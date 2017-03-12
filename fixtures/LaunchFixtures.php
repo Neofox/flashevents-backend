@@ -3,6 +3,7 @@
 use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
 use Doctrine\Common\DataFixtures\Loader;
 use Doctrine\Common\DataFixtures\Purger\ORMPurger;
+use FlashEvents\DataFixtures\ProviderFixtureLoader;
 use FlashEvents\DataFixtures\UserFixtureLoader;
 
 
@@ -24,6 +25,9 @@ $em = \Doctrine\ORM\EntityManager::create($settings['connection'], $config);
 
 $loader = new Loader();
 $loader->addFixture(new UserFixtureLoader());
+$loader->addFixture(new ProviderFixtureLoader());
+
+
 $purger = new ORMPurger();
 $executor = new ORMExecutor($em, $purger);
 $executor->execute($loader->getFixtures());
