@@ -15,11 +15,10 @@ class Providers
 
     public function __construct(ContainerInterface $container) {
         $this->container = $container;
-        $this->providerManager = $container->get('manager.provider');
+        $this->setProviderManager($container->get('manager.provider'));
     }
 
     public function getAll(Request $request, Response $response) {
         return $response->withJson($this->providerManager->findAll());
-
     }
 }

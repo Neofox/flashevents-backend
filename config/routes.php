@@ -12,7 +12,7 @@ $app->get('/', function (Request $request, Response $response) {
     return $response->getBody()->write('Entre Vehbo et Anthony, ça sent pas la rose');
 });
 
-$app->post('/login',  Users::class . ':login');
+$app->get('/login',  Users::class . ':login');
 
 $app->group('/api', function () {
     $this->group('/users', function () {
@@ -44,3 +44,17 @@ $app->group('/api', function () {
         $this->get('[/]', Providers::class . ':getAll');
     });
 });
+
+$app->options('/{routes:.+}', function (Request $request, Response $response) {
+    return $response;
+});
+
+$app->add(function (Request $req, Response $res, callable $next) {
+    /** @var Response $response */
+    $response = $next($req, $res);
+    return $response
+        ->withHeader('Access-Control-Allow-Origin', '*')
+        ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+        ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+});
+
