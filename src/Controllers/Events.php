@@ -24,7 +24,7 @@ class Events
 
     public function getAll(Request $request, Response $response) {
         $event = $this->getEventManager()->findAll();
-        //var_dump($event);die;
+
         return $response->withJson($this->getSerializer()->serializeEntities($event));
     }
 

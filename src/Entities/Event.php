@@ -33,7 +33,7 @@ class Event implements EntityInterface
     protected $providers;
 
     /**
-     * @ORM\OneToOne(targetEntity="Address")
+     * @ORM\OneToOne(targetEntity="Address", cascade={"persist"})
      * @JoinColumn(name="id_address", referencedColumnName="id")
      * @var Address
      */
